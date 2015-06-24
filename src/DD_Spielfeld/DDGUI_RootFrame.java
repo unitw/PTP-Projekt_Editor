@@ -52,18 +52,10 @@ public class DDGUI_RootFrame extends JFrame {
 
     private DDGUI_SpielFeld feld = new DDGUI_SpielFeld(this, 800, 500);
     private DDGUI_InfoPanel infopanel = new DDGUI_InfoPanel();
-    private JTextArea output = new JTextArea();
+   
     private JMenuBar spielmenuBar = new JMenuBar();
 
-    public JTextArea getOutput() {
-        return output;
-    }
-
-    public void setOutput(JTextArea output) {
-        this.output = output;
-    }
-
-    public DDGUI_SpielFeld getFeld() {
+       public DDGUI_SpielFeld getFeld() {
         return feld;
     }
 
@@ -88,22 +80,16 @@ public class DDGUI_RootFrame extends JFrame {
         feld.setPreferredSize(new Dimension(800, 810));
 
         infopanel.setPreferredSize(new Dimension(200, 600));
-        output.setPreferredSize(new Dimension(800, 100));
-
+     
         JScrollPane sp_feld = new JScrollPane(feld);
         sp_feld.setBorder(null);
         JScrollPane sp_info = new JScrollPane(infopanel);
         sp_info.setBorder(null);
-        JScrollPane sp_output = new JScrollPane(output);
-        sp_output.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
-        sp_output.setBorder(null);
-
+    
         //  contentPanel.add(spielmenuBar,"span 3");
         contentPanel.add(feld, "span 2");
         contentPanel.add(infopanel, "span 1,wrap");
-        contentPanel.add(new JScrollPane(output), "push x");
-
+    
         Image img = null;
         try {
             img = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/logo.png"));

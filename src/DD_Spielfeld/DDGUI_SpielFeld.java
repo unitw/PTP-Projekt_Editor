@@ -7,6 +7,7 @@ package DD_Spielfeld;
 
 import DD_Editorlistener.DD_Statuslistener;
 import DD_Objekte.DD_Monster;
+import DD_Objekte.DD_Schatztruhe;
 import DD_Objekte.DD_Spieler;
 import DD_Objekte.DD_Umgebung;
 import XML.StaxStore;
@@ -158,6 +159,9 @@ public class DDGUI_SpielFeld extends JPanel implements StaxStore {
                         g.setColor(Color.white);
                         g.drawRect(i * this.ratio, j * this.ratio, this.ratio, this.ratio);
                     }
+
+                } else if (this.field[i][j] instanceof DD_Schatztruhe) {
+                    g.drawImage(this.ziel, i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
 
                 } else if (this.field[i][j] instanceof DD_Monster) {
 

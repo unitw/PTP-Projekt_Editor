@@ -6,6 +6,7 @@
 package DD_Editorlistener;
 
 import DD_Objekte.DD_Monster;
+import DD_Objekte.DD_Schatztruhe;
 import DD_Objekte.DD_Spieler;
 import DD_Objekte.DD_Umgebung;
 import DD_Spielfeld.DDGUI_SpielFeld;
@@ -30,63 +31,100 @@ public class DD_Statuslistener implements MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent me) {
-        this.feld.requestFocus();
-        me.getSource();
-        int posx = me.getX() / feld.ratio;
-        int posy = me.getY() / feld.ratio;
 
-        if (posx > 30 || posy > 30) {
-            return;
-        }
+        try {
+            this.feld.requestFocus();
+            me.getSource();
+            int posx = me.getX() / feld.ratio;
+            int posy = me.getY() / feld.ratio;
 
-        if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
-            for (int i = 0; i < 30; i++) {
-                for (int j = 0; j < 30; j++) {
-                    feld.field[i][j] = new DD_Umgebung("boden", i, j);
+            if (posx > 30 || posy > 30) {
+                return;
+            }
 
-                }
+            System.out.println("X:" + posx + "|" + "Y:" + posy);
+
+            int select = feld.getRoot().getInfopanel().getCurrentvalue();
+
+            switch (select) {
+                case 1:
+                    feld.removeAll();
+                    if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
+                        for (int i = 0; i < 30; i++) {
+                            for (int j = 0; j < 30; j++) {
+
+                                feld.field[i][j] = new DD_Umgebung("baum", i, j);
+                            }
+                        }
+
+                    } else {
+                        feld.field[posx][posy] = new DD_Umgebung("baum", posx, posy);
+                    }
+                    feld.revalidate();
+                    feld.repaint();
+                    break;
+
+                case 2:
+                    feld.removeAll();
+                    if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
+                        for (int i = 0; i < 30; i++) {
+                            for (int j = 0; j < 30; j++) {
+                                feld.field[i][j] = new DD_Schatztruhe(posx, posy);
+                            }
+                        }
+
+                    } else {
+                        feld.field[posx][posy] = new DD_Schatztruhe(posx, posy);
+                    }
+                    feld.revalidate();
+                    feld.repaint();
+                    break;
+                case 3:
+                    feld.removeAll();
+                    if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
+                        for (int i = 0; i < 30; i++) {
+                            for (int j = 0; j < 30; j++) {
+                                feld.field[i][j] = new DD_Umgebung("boden", i, j);
+                            }
+                        }
+
+                    } else {
+
+                        feld.field[posx][posy] = new DD_Umgebung("boden", posx, posy);
+                    }
+                    feld.revalidate();
+                    feld.repaint();
+                    break;
+                case 4:
+                    feld.removeAll();
+                    if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
+                        for (int i = 0; i < 30; i++) {
+                            for (int j = 0; j < 30; j++) {
+                                feld.field[i][j] = new DD_Spieler(posx, posy);
+                            }
+                        }
+
+                    } else {
+                        feld.field[posx][posy] = new DD_Spieler(posx, posy);
+
+                    }
+                    feld.revalidate();
+                    feld.repaint();
+                    break;
+                case 5:
+                    feld.removeAll();
+
+                    feld.field[posx][posy] = new DD_Monster(posx, posy);
+
+                    feld.revalidate();
+                    feld.repaint();
+                    break;
+                default:
 
             }
-            feld.revalidate();
-            feld.repaint();
-            return;
-        }
-
-        System.out.println("X:" + posx + "|" + "Y:" + posy);
-
-        int select = feld.getRoot().getInfopanel().getCurrentvalue();
-
-        switch (select) {
-            case 1:
-                feld.field[posx][posy] = new DD_Umgebung("baum", posx, posy);
-                feld.revalidate();
-                feld.repaint();
-                break;
-            case 2:
-                feld.field[posx][posy] = new DD_Umgebung("boden", posx, posy);
-                feld.revalidate();
-                feld.repaint();
-                break;
-            case 3:
-
-                feld.field[posx][posy] = new DD_Umgebung("boden", posx, posy);
-                feld.revalidate();
-                feld.repaint();
-                break;
-            case 4:
-                feld.field[posx][posy] = new DD_Spieler(posx, posy);
-                feld.revalidate();
-                feld.repaint();
-                break;
-            case 5:
-                feld.field[posx][posy] = new DD_Monster(posx, posy);
-                feld.revalidate();
-                feld.repaint();
-                break;
-            default:
+        } catch (Exception ex) {
 
         }
-
     }
 
     @Override

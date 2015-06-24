@@ -8,6 +8,7 @@ package DD_Spielfeld;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -26,11 +27,23 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
     int ratio;
     int ZELLEN = 30;
 
-    ImageIcon iconstein = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/ziel.png"));
+    ImageIcon iconstein = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/stein.png"));
     ImageIcon iconboden = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/boden.png"));
-    ImageIcon iconziel = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/stein.png"));
+    ImageIcon iconziel = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/ziel.png"));
     ImageIcon iconmonster = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/geist.gif"));
     ImageIcon iconplayer = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/playerz.gif"));
+
+    BufferedImage bfstein;
+    BufferedImage bfnboden;
+    BufferedImage bfziel;
+    BufferedImage bfmonster;
+    BufferedImage bfplayer;
+
+    JButton fcgstein;
+    JButton fcgboden;
+    JButton fcgziel;
+    JButton fcgmonster;
+    JButton fcgplayer;
 
     private JButton stein;
     private JButton boden;
@@ -52,8 +65,8 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
         this.HEIGHT = this.getHeight();
         this.ratio = this.WIDTH / this.ZELLEN;
         this.boden = new JButton(iconboden);
-        this.stein = new JButton(iconziel);
-        this.ziel = new JButton(iconstein);
+        this.stein = new JButton(iconstein);
+        this.ziel = new JButton(iconziel);
         this.monster = new JButton(iconmonster);
         this.player = new JButton(iconplayer);
         this.setone = new JCheckBox("Alles füllen");
@@ -97,6 +110,30 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
 
     }
 
+    public BufferedImage getBfstein() {
+        return bfstein;
+    }
+
+    public BufferedImage getBfnboden() {
+        return bfnboden;
+    }
+
+    public BufferedImage getBfziel() {
+        return bfziel;
+    }
+
+    public BufferedImage getBfmonster() {
+        return bfmonster;
+    }
+
+    public BufferedImage getBfplayer() {
+        return bfplayer;
+    }
+    
+    
+    
+    
+
     public JCheckBox getSetone() {
         return setone;
     }
@@ -105,10 +142,6 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
         this.setone = setone;
     }
 
-    
-     
-    
-    
     public int getCurrentvalue() {
         return currentvalue;
     }
