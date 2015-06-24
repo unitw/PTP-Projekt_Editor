@@ -9,11 +9,16 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileReader;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  * http://www.migcalendar.com/miglayout/whitepaper.html
@@ -108,6 +113,18 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
             currentvalue = 5;
         }
 
+        if (ae.equals(fcgboden)) {
+            final JFileChooser fc1 = new JFileChooser("C:/");
+
+            int a1 = fc1.showOpenDialog(null);
+            if (fc1.getSelectedFile().getPath() == null) {
+                return;
+            }
+            String path1 = fc1.getSelectedFile().getPath();
+            // Pfad zur XML Datei
+            FileReader reader = null;
+
+        }
     }
 
     public BufferedImage getBfstein() {
@@ -129,10 +146,6 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
     public BufferedImage getBfplayer() {
         return bfplayer;
     }
-    
-    
-    
-    
 
     public JCheckBox getSetone() {
         return setone;
