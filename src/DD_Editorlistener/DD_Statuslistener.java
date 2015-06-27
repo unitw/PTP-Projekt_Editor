@@ -60,6 +60,7 @@ public class DD_Statuslistener implements MouseMotionListener {
                     } else {
                         feld.field[posx][posy] = new DD_Umgebung("baum", posx, posy);
                     }
+                    feld.setStein(feld.getRoot().getInfopanel().getCurrentvalueImage());
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -76,6 +77,7 @@ public class DD_Statuslistener implements MouseMotionListener {
                     } else {
                         feld.field[posx][posy] = new DD_Schatztruhe(posx, posy);
                     }
+                    feld.setZiel(feld.getRoot().getInfopanel().getCurrentvalueImage());
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -92,6 +94,7 @@ public class DD_Statuslistener implements MouseMotionListener {
 
                         feld.field[posx][posy] = new DD_Umgebung("boden", posx, posy);
                     }
+                    feld.setBoden(feld.getRoot().getInfopanel().getCurrentvalueImage());
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -108,6 +111,7 @@ public class DD_Statuslistener implements MouseMotionListener {
                         feld.field[posx][posy] = new DD_Spieler(posx, posy);
 
                     }
+                   feld.getDD_player().setPlayerImage(feld.getRoot().getInfopanel().getCurrentvalueImage());
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -115,7 +119,7 @@ public class DD_Statuslistener implements MouseMotionListener {
                     feld.removeAll();
 
                     feld.field[posx][posy] = new DD_Monster(posx, posy);
-
+                    
                     feld.revalidate();
                     feld.repaint();
                     break;

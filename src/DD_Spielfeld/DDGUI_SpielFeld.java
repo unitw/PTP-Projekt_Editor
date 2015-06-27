@@ -118,6 +118,38 @@ public class DDGUI_SpielFeld extends JPanel implements StaxStore {
 
     }
 
+    public BufferedImage getStein() {
+        return stein;
+    }
+
+    public void setStein(BufferedImage stein) {
+        this.stein = stein;
+    }
+
+    public BufferedImage getBoden() {
+        return boden;
+    }
+
+    public void setBoden(BufferedImage boden) {
+        this.boden = boden;
+    }
+
+    public Image getGeist() {
+        return geist;
+    }
+
+    public void setGeist(Image geist) {
+        this.geist = geist;
+    }
+
+    public BufferedImage getZiel() {
+        return ziel;
+    }
+
+    public void setZiel(BufferedImage ziel) {
+        this.ziel = ziel;
+    }
+
     public DDGUI_RootFrame getRoot() {
         return root;
     }
