@@ -46,11 +46,11 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
     ImageIcon iconmonster = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/geist.gif"));
     ImageIcon iconplayer = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/playerz.gif"));
 
-    BufferedImage bfstein;
-    public BufferedImage bfnboden;
-    BufferedImage bfziel;
-    BufferedImage bfmonster;
-    BufferedImage bfplayer;
+    private BufferedImage bfstein;
+    private BufferedImage bfnboden;
+    private BufferedImage bfziel;
+    private BufferedImage bfmonster;
+    private BufferedImage bfplayer;
 
     JButton fcgstein = new JButton("Icon:Stein");
     JButton fcgboden = new JButton("Icon:Boden");
@@ -170,6 +170,107 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
             boden.setIcon(iconboden);
 
         }
+        if (ae.getSource().equals(fcgmonster)) {
+            final JFileChooser fc1 = new JFileChooser("C:/");
+
+            int a1 = fc1.showOpenDialog(null);
+            if (fc1.getSelectedFile().getPath() == null) {
+                return;
+            }
+            URL path1 = null;
+            try {
+                path1 = fc1.getSelectedFile().toURI().toURL();
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            iconmonster = new ImageIcon(path1);
+
+            try {
+                bfmonster = ImageIO.read(path1);
+            } catch (IOException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            monster.setIcon(iconmonster);
+
+        }
+        if (ae.getSource().equals(fcgplayer)) {
+            final JFileChooser fc1 = new JFileChooser("C:/");
+
+            int a1 = fc1.showOpenDialog(null);
+            if (fc1.getSelectedFile().getPath() == null) {
+                return;
+            }
+            URL path1 = null;
+            try {
+                path1 = fc1.getSelectedFile().toURI().toURL();
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            iconplayer = new ImageIcon(path1);
+
+            try {
+                bfplayer = ImageIO.read(path1);
+            } catch (IOException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            player.setIcon(iconplayer);
+
+        }
+        if (ae.getSource().equals(fcgstein)) {
+            final JFileChooser fc1 = new JFileChooser("C:/");
+
+            int a1 = fc1.showOpenDialog(null);
+            if (fc1.getSelectedFile().getPath() == null) {
+                return;
+            }
+            URL path1 = null;
+            try {
+                path1 = fc1.getSelectedFile().toURI().toURL();
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            iconstein = new ImageIcon(path1);
+
+            try {
+                bfstein = ImageIO.read(path1);
+            } catch (IOException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            stein.setIcon(iconstein);
+
+        }
+        if (ae.getSource().equals(fcgziel)) {
+            final JFileChooser fc1 = new JFileChooser("C:/");
+
+            int a1 = fc1.showOpenDialog(null);
+            if (fc1.getSelectedFile().getPath() == null) {
+                return;
+            }
+            URL path1 = null;
+            try {
+                path1 = fc1.getSelectedFile().toURI().toURL();
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            iconziel = new ImageIcon(path1);
+
+            try {
+                bfziel = ImageIO.read(path1);
+            } catch (IOException ex) {
+                Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ziel.setIcon(iconziel);
+
+        }
+        curBuffMap.put(1, bfstein);
+        curBuffMap.put(2, bfziel);
+        curBuffMap.put(3, bfnboden);
+        curBuffMap.put(4, bfplayer);
+        curBuffMap.put(5, bfmonster);
 
     }
 

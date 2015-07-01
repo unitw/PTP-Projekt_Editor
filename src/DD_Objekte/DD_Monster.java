@@ -7,11 +7,16 @@ package DD_Objekte;
 
 import XML.StaxStore;
 import XML.StaxWriter;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
 
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -167,9 +172,15 @@ public class DD_Monster implements StaxStore {
         Integer ypos1 = ypos;
 
         String linespos = "";
-
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
-            staxwriter.StoreDD_Objekt(staxwriter.writer, Typ, "xPos", xpos1.toString(), "yPos", ypos1.toString(), 1);
+            ImageIO.write((RenderedImage) l_gif.getIcon(), "jpg", baos);
+        } catch (IOException ex) {
+            Logger.getLogger(DD_Umgebung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] bytes = baos.toByteArray();
+        try {
+            staxwriter.StoreDD_Objekt(staxwriter.writer, Typ, "xPos", xpos1.toString(), "yPos", ypos1.toString(),1);
         } catch (XMLStreamException ex) {
             Logger.getLogger(DD_Monster.class.getName()).log(Level.SEVERE, null, ex);
         }

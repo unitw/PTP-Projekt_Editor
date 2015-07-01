@@ -10,7 +10,10 @@ import XML.StaxStore;
 import XML.StaxWriter;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -57,15 +60,14 @@ public class DD_Spieler implements StaxStore {
         faehigkeitenrange.put(2, 1);
         faehigkeitenrange.put(3, 5);
 
-        
-            dir = 1;
-            this.xpos = xpos;
-            this.ypos = ypos;
+        dir = 1;
+        this.xpos = xpos;
+        this.ypos = ypos;
 //            this.playerUnten = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerUnten.png"));
 //            this.playerOben = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerOben.png"));
 //            this.playerRechts = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerRechts.png"));
 //            this.playerLinks = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerLinks.png"));
-       
+
         playerImageAktuell = playerUnten;
         l_gif.setIcon(new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/playerz.gif")));
         l_gif.setBorder(null);
@@ -171,6 +173,14 @@ public class DD_Spieler implements StaxStore {
         Integer ypos1 = ypos;
 
         String linespos = "";
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write((RenderedImage) l_gif.getIcon(), "jpg", baos);
+        } catch (IOException ex) {
+            Logger.getLogger(DD_Umgebung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] bytes = baos.toByteArray();
 
         try {
             staxwriter.StoreDD_Objekt(staxwriter.writer, Typ, "xPos", xpos1.toString(), "yPos", ypos1.toString(), 1);

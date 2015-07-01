@@ -9,8 +9,12 @@ import DD_Spielfeld.DDGUI_SpielFeld;
 import XML.StaxStore;
 import XML.StaxWriter;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.XMLStreamException;
@@ -29,6 +33,7 @@ public class DD_Umgebung implements IDD_MenuAnzeiger, StaxStore {
 
     public boolean isHasfocus() {
         return hasfocus;
+
     }
 
     public void setHasfocus(boolean hasfocus) {
@@ -75,6 +80,14 @@ public class DD_Umgebung implements IDD_MenuAnzeiger, StaxStore {
         Integer ypos1 = ypos;
 
         String linespos = "";
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(img, "jpg", baos);
+        } catch (IOException ex) {
+            Logger.getLogger(DD_Umgebung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] bytes = baos.toByteArray();
 
         try {
             staxwriter.StoreDD_Objekt(staxwriter.writer, Typ, "xPos", xpos1.toString(), "yPos", ypos1.toString(), 1);
