@@ -181,10 +181,10 @@ public class DDGUI_SpielFeld extends JPanel implements StaxStore {
 
                     switch (umgebung.getTyp()) {
                         case "boden":
-                            g.drawImage(this.boden, i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
+                            g.drawImage(umgebung.getBackgroundImg(), i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
                             break;
                         case "baum":
-                            g.drawImage(this.stein, i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
+                            g.drawImage(umgebung.getBackgroundImg(), i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
                             break;
                     }
                     if (umgebung.isHasfocus()) {
@@ -193,7 +193,9 @@ public class DDGUI_SpielFeld extends JPanel implements StaxStore {
                     }
 
                 } else if (this.field[i][j] instanceof DD_Schatztruhe) {
-                    g.drawImage(this.ziel, i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
+                    DD_Schatztruhe schatz = (DD_Schatztruhe) this.field[i][j];
+
+                    g.drawImage(schatz.getBackgroundImg(), i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
 
                 } else if (this.field[i][j] instanceof DD_Monster) {
 
@@ -208,15 +210,8 @@ public class DDGUI_SpielFeld extends JPanel implements StaxStore {
 
                     this.add(mon.getL_gif());
 
-                    // g.drawImage(DDGUI_SpielFeld.this.getGeist(), x * DDGUI_SpielFeld.this.getRatio(), y * DDGUI_SpielFeld.this.getRatio(), DDGUI_SpielFeld.this.getRatio(), DDGUI_SpielFeld.this.getRatio(), null);
-                    DD_Monster m = (DD_Monster) this.field[i][j];
-                    if (m.isHasfocus()) {
-                        g.setColor(Color.red);
-                        g.drawRect(i * this.ratio, j * this.ratio, this.ratio + 1, this.ratio + 1);
-                    }
                 } else if (this.field[i][j] instanceof DD_Spieler) {
 
-                    //   g.drawImage(this.dd_player.getPlayerImage(), i * this.ratio, j * this.ratio, this.ratio, this.ratio, null);
                     DD_Spieler sp = (DD_Spieler) this.field[i][j];
                     this.remove(sp.getL_gif());
                     sp.getL_gif().setBounds(i * DDGUI_SpielFeld.this.getRatio(), j * DDGUI_SpielFeld.this.getRatio(), DDGUI_SpielFeld.this.getRatio(), DDGUI_SpielFeld.this.getRatio());

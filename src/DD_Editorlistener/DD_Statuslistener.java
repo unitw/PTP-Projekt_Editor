@@ -23,7 +23,6 @@ import java.util.Stack;
 public class DD_Statuslistener implements MouseMotionListener {
 
     DDGUI_SpielFeld feld;
-    Stack<Object> focusstack = new Stack();
 
     public DD_Statuslistener(DDGUI_SpielFeld feld) {
         this.feld = feld;
@@ -53,14 +52,20 @@ public class DD_Statuslistener implements MouseMotionListener {
                         for (int i = 0; i < 30; i++) {
                             for (int j = 0; j < 30; j++) {
 
-                                feld.field[i][j] = new DD_Umgebung("baum", i, j);
+                                DD_Umgebung umg = new DD_Umgebung("baum", i, j);
+                                umg.setBackgroundImg(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                                feld.field[i][j] = umg;
+
                             }
                         }
 
                     } else {
-                        feld.field[posx][posy] = new DD_Umgebung("baum", posx, posy);
+
+                        DD_Umgebung umg = new DD_Umgebung("baum", posx, posy);
+                        umg.setBackgroundImg(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                        feld.field[posx][posy] = umg;
+
                     }
-                    feld.setStein(feld.getRoot().getInfopanel().getCurrentvalueImage());
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -70,14 +75,19 @@ public class DD_Statuslistener implements MouseMotionListener {
                     if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
                         for (int i = 0; i < 30; i++) {
                             for (int j = 0; j < 30; j++) {
-                                feld.field[i][j] = new DD_Schatztruhe(posx, posy);
+                                DD_Schatztruhe schatz = new DD_Schatztruhe(i, j);
+                                schatz.setBackgroundImg(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                                feld.field[i][j] = schatz;
+
                             }
                         }
 
                     } else {
-                        feld.field[posx][posy] = new DD_Schatztruhe(posx, posy);
+                        DD_Schatztruhe schatz = new DD_Schatztruhe(posx, posy);
+                        schatz.setBackgroundImg(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                        feld.field[posx][posy] = schatz;
                     }
-                    feld.setZiel(feld.getRoot().getInfopanel().getCurrentvalueImage());
+
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -86,15 +96,18 @@ public class DD_Statuslistener implements MouseMotionListener {
                     if (feld.getRoot().getInfopanel().getSetone().isSelected()) {
                         for (int i = 0; i < 30; i++) {
                             for (int j = 0; j < 30; j++) {
-                                feld.field[i][j] = new DD_Umgebung("boden", i, j);
+                                DD_Umgebung umg = new DD_Umgebung("boden", i, j);
+                                umg.setBackgroundImg(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                                feld.field[i][j] = umg;
                             }
                         }
 
                     } else {
+                        DD_Umgebung umg = new DD_Umgebung("boden", posx, posy);
+                        umg.setBackgroundImg(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                        feld.field[posx][posy] = umg;
 
-                        feld.field[posx][posy] = new DD_Umgebung("boden", posx, posy);
                     }
-                    feld.setBoden(feld.getRoot().getInfopanel().bfnboden);
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -111,7 +124,7 @@ public class DD_Statuslistener implements MouseMotionListener {
                         feld.field[posx][posy] = new DD_Spieler(posx, posy);
 
                     }
-                   feld.getDD_player().setPlayerImage(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                    feld.getDD_player().setPlayerImage(feld.getRoot().getInfopanel().getCurrentvalueImage());
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -119,7 +132,7 @@ public class DD_Statuslistener implements MouseMotionListener {
                     feld.removeAll();
 
                     feld.field[posx][posy] = new DD_Monster(posx, posy);
-                    
+
                     feld.revalidate();
                     feld.repaint();
                     break;
@@ -127,7 +140,6 @@ public class DD_Statuslistener implements MouseMotionListener {
 
             }
         } catch (Exception ex) {
-
         }
     }
 

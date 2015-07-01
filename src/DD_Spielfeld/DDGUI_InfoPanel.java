@@ -75,7 +75,6 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
         try {
             this.bfstein = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/stein.png"));
             this.bfziel = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/ziel.png"));
-
             this.bfnboden = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/boden.png"));
         } catch (IOException ex) {
             Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -171,6 +170,7 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
             boden.setIcon(iconboden);
 
         }
+
     }
 
     public BufferedImage getBfstein() {

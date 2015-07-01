@@ -57,17 +57,15 @@ public class DD_Spieler implements StaxStore {
         faehigkeitenrange.put(2, 1);
         faehigkeitenrange.put(3, 5);
 
-        try {
+        
             dir = 1;
             this.xpos = xpos;
             this.ypos = ypos;
-            this.playerUnten = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerUnten.png"));
-            this.playerOben = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerOben.png"));
-            this.playerRechts = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerRechts.png"));
-            this.playerLinks = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerLinks.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(DD_Spieler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//            this.playerUnten = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerUnten.png"));
+//            this.playerOben = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerOben.png"));
+//            this.playerRechts = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerRechts.png"));
+//            this.playerLinks = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/playerLinks.png"));
+       
         playerImageAktuell = playerUnten;
         l_gif.setIcon(new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/playerz.gif")));
         l_gif.setBorder(null);

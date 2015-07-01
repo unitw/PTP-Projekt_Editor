@@ -5,6 +5,8 @@
  */
 package DD_Objekte;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author 3welge
@@ -13,6 +15,15 @@ public class DD_Schatztruhe {
 
     int xpos;
     int ypos;
+    BufferedImage BackgroundImg;
+
+    public BufferedImage getBackgroundImg() {
+        return BackgroundImg;
+    }
+
+    public void setBackgroundImg(BufferedImage BackgroundImg) {
+        this.BackgroundImg = BackgroundImg;
+    }
 
     public DD_Schatztruhe(int xpos, int ypos) {
         this.xpos = xpos;

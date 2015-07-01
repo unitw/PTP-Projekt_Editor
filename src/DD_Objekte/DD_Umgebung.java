@@ -8,6 +8,7 @@ package DD_Objekte;
 import DD_Spielfeld.DDGUI_SpielFeld;
 import XML.StaxStore;
 import XML.StaxWriter;
+import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class DD_Umgebung implements IDD_MenuAnzeiger, StaxStore {
 
     int xpos;
     int ypos;
+    BufferedImage img;
 
     public boolean isHasfocus() {
         return hasfocus;
@@ -42,6 +44,14 @@ public class DD_Umgebung implements IDD_MenuAnzeiger, StaxStore {
         this.Typ = Typ;
         this.xpos = x;
         this.ypos = y;
+    }
+
+    public BufferedImage getBackgroundImg() {
+        return img;
+    }
+
+    public void setBackgroundImg(BufferedImage img) {
+        this.img = img;
     }
 
     public String getTyp() {
