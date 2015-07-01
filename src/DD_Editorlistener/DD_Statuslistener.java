@@ -94,7 +94,7 @@ public class DD_Statuslistener implements MouseMotionListener {
 
                         feld.field[posx][posy] = new DD_Umgebung("boden", posx, posy);
                     }
-                    feld.setBoden(feld.getRoot().getInfopanel().getCurrentvalueImage());
+                    feld.setBoden(feld.getRoot().getInfopanel().bfnboden);
                     feld.revalidate();
                     feld.repaint();
                     break;

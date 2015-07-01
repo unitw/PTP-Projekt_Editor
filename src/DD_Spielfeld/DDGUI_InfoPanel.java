@@ -47,7 +47,7 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
     ImageIcon iconplayer = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/playerz.gif"));
 
     BufferedImage bfstein;
-    BufferedImage bfnboden;
+    public BufferedImage bfnboden;
     BufferedImage bfziel;
     BufferedImage bfmonster;
     BufferedImage bfplayer;
@@ -134,11 +134,11 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
         if (ae.getSource().equals(stein)) {
             currentvalue = 1;
         }
-        if (ae.getSource().equals(boden)) {
-            currentvalue = 3;
-        }
         if (ae.getSource().equals(ziel)) {
             currentvalue = 2;
+        }
+        if (ae.getSource().equals(boden)) {
+            currentvalue = 3;
         }
         if (ae.getSource().equals(player)) {
             currentvalue = 4;
