@@ -40,10 +40,10 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
 
     Map<Integer, BufferedImage> curBuffMap = new HashMap();
 
-    ImageIcon iconstein = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/stein.png"));
-    ImageIcon iconboden = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/boden.png"));
+    ImageIcon iconstein = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/Tobi_Bilder/Wiese_Felsen.png"));
+    ImageIcon iconboden = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/Tobi_Bilder/Wiese_Gras.png"));
     ImageIcon iconziel = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/ziel.png"));
-    ImageIcon iconmonster = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/geist.gif"));
+    ImageIcon iconmonster = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/Tobi_Bilder/Wiese_Wildschwein.png"));
     ImageIcon iconplayer = new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/playerz.gif"));
 
     private BufferedImage bfstein;
@@ -73,9 +73,9 @@ public class DDGUI_InfoPanel extends JPanel implements ActionListener {
     public DDGUI_InfoPanel() {
         super();
         try {
-            this.bfstein = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/stein.png"));
+            this.bfstein = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/Tobi_Bilder/Wiese_Felsen.png"));
             this.bfziel = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/ziel.png"));
-            this.bfnboden = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/boden.png"));
+            this.bfnboden = ImageIO.read(ClassLoader.getSystemClassLoader().getResource("resources/Tobi_Bilder/Wiese_Gras.png"));
         } catch (IOException ex) {
             Logger.getLogger(DDGUI_InfoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
