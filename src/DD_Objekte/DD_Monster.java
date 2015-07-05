@@ -50,7 +50,7 @@ public class DD_Monster implements StaxStore {
     public DD_Monster(int xpos, int ypos) {
         this.xpos = xpos;
         this.ypos = ypos;
-        l_gif.setIcon(new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/geist.gif")));
+        l_gif.setIcon(new ImageIcon(ClassLoader.getSystemClassLoader().getResource("resources/Tobi_Bilder/Wiese_Wildschwein.png")));
         l_gif.setBorder(null);
         l_gif.setOpaque(true);
 
