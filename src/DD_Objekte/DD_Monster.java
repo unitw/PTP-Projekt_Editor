@@ -173,12 +173,8 @@ public class DD_Monster implements StaxStore {
 
         String linespos = "";
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ImageIO.write((RenderedImage) l_gif.getIcon(), "jpg", baos);
-        } catch (IOException ex) {
-            Logger.getLogger(DD_Umgebung.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        byte[] bytes = baos.toByteArray();
+      
+       
         try {
             staxwriter.StoreDD_Objekt(staxwriter.writer, Typ, "xPos", xpos1.toString(), "yPos", ypos1.toString(),1);
         } catch (XMLStreamException ex) {
