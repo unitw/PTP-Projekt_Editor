@@ -172,7 +172,6 @@ public class DD_Monster implements StaxStore {
         Integer ypos1 = ypos;
 
         String linespos = "";
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
       
        
         try {
